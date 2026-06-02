@@ -435,6 +435,7 @@
   const ROWS = H / TILE;
   const STEP = 1000 / 60;
   const MAX_WAVE = 7;
+  const PLAYER_SPAWN = { x: W / 2, y: H - TILE * 4.3 };
   const DIRS = {
     up: { x: 0, y: -1, angle: 0 },
     right: { x: 1, y: 0, angle: Math.PI / 2 },
@@ -606,8 +607,7 @@
     ].forEach(([c, r]) => add(c, r, "grass"));
 
     [
-      [10, 17], [13, 17], [10, 18], [13, 18], [10, 19], [13, 19],
-      [11, 17], [12, 17]
+      [10, 17], [13, 17], [10, 18], [13, 18], [10, 19], [13, 19]
     ].forEach(([c, r]) => add(c, r, "brick"));
 
     return map;
@@ -629,8 +629,8 @@
   function makePlayer() {
     return {
       type: "player",
-      x: W / 2,
-      y: H - TILE * 4.3,
+      x: PLAYER_SPAWN.x,
+      y: PLAYER_SPAWN.y,
       w: 28,
       h: 28,
       dir: "up",
@@ -972,8 +972,8 @@
       finish("over");
       return;
     }
-    player.x = W / 2;
-    player.y = H - TILE * 4.3;
+    player.x = PLAYER_SPAWN.x;
+    player.y = PLAYER_SPAWN.y;
     player.dir = "up";
     player.invincible = 2200;
   }
